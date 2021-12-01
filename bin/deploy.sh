@@ -17,5 +17,5 @@ if [ -z "$CIRCLE_TAG" ]; then
   npx gh-pages-multi deploy --template docs/index.html;
 else
   # Deploy specific tagged version
-  npx gh-pages-multi deploy --template docs/index.html --better-target --target $CIRCLE_TAG;
+  npx gh-pages-multi deploy --template docs/index.html --target $CIRCLE_TAG;
 fi
