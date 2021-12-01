@@ -1,0 +1,37 @@
+version: 2.1
+
+jobs:
+  lint:
+    docker:
+      - image: circleci/node:12
+    steps:
+      - checkout
+      - run: npm install
+      - run: npm run lint
+
+  deploy:
+    docker:
+      - image: circleci/node:12
+    steps:
+      - checkout
+      - run: npm install
+      - run: npm run deploy
+
+workflows:
+  version: 2
+  build-and-deploy:
+    jobs:
+      # Lint runs on every push (including tags)
+      - lint:
+          filters:
+            tags:
+              only: /^v.*/
+      # Deploy docs from master or a tag
+      - deploy:
+          requires:
+            - lint
+          filters:
+            branches:
+              only: main
+            tags:
+              only: /^v.*/
