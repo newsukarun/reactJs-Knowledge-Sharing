@@ -1,0 +1,27 @@
+version: 2.1
+
+jobs:
+  deploy:
+    docker:
+      - image: circleci/node:12
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+            - 0f:b1:4a:00:3f:ad:88:90:b8:5f:70:a0:20:c9:b6:2e
+      - checkout
+      - run: npm install
+      - run: npm run deploy
+
+workflows:
+  version: 2
+  build-and-deploy:
+    jobs:
+      # Deploy docs from master or a tag
+      - deploy:
+          requires:
+            - lint
+          filters:
+            branches:
+              only: main
+            tags:
+              only: /^v.*/
