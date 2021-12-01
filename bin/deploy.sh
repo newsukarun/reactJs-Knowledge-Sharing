@@ -14,8 +14,8 @@ git config --global user.email "$( git log --format=%ae -n 1 ${COMMIT_SHA} )"
 # Deploy
 if [ -z "$CIRCLE_TAG" ]; then
   # Deploy latest
-  npx gh-pages-multi deploy --template index.html;
+  npx gh-pages-multi deploy --template docs/index.html;
 else
   # Deploy specific tagged version
-  npx gh-pages-multi deploy --template index.html --better-target --target $CIRCLE_TAG;
+  npx gh-pages-multi deploy --template docs/index.html --better-target --target $CIRCLE_TAG;
 fi
