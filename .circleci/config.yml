@@ -18,8 +18,6 @@ workflows:
     jobs:
       # Deploy docs from master or a tag
       - deploy:
-          requires:
-            - lint
           filters:
             branches:
               only: main
