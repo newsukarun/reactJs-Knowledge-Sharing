@@ -10,6 +10,7 @@ jobs:
             - 4c:f7:88:05:a7:9c:c6:82:87:35:92:07:3f:2d:7a:9d
       - checkout
       - run: npm install
+      - run: npm install pug-cli -g
       - run: npm run deploy
 
 workflows:
