@@ -4,6 +4,9 @@ set -ex
 # Bundle the docs to html and copy to the docs/ folder
 npm run build
 
+# Copy all the yaml files to the docs/ folder
+cp -r build/ docs/
+
 # Ensure we have git appropriately configured to be able to commit & push
 git config --global user.name "$( git log --format=%an -n 1 ${COMMIT_SHA} )"
 git config --global user.email "$( git log --format=%ae -n 1 ${COMMIT_SHA} )"
