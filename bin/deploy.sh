@@ -19,4 +19,5 @@ if [ -z "$CIRCLE_TAG" ]; then
 else
   # Deploy specific tagged version
   npx gh-pages-multi deploy --template index.pug --target $CIRCLE_TAG;
+  npx gh-pages-multi deploy --template index.pug --target "async/${CIRCLE_TAG}";
 fi
