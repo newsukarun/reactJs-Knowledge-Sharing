@@ -5,7 +5,7 @@ set -ex
 npm run build
 
 # Copy all the yaml files to the docs/ folder
-cp -r build/* docs/*
+cp -r build/* docs/
 
 # Ensure we have git appropriately configured to be able to commit & push
 git config --global user.name "$( git log --format=%an -n 1 ${COMMIT_SHA} )"
