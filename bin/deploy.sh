@@ -7,7 +7,6 @@ npm run build
 mkdir docs
 # Copy all the yaml files to the docs/ folder
 cp -r build/* docs/
-cp -r index.pug docs/
 
 # Ensure we have git appropriately configured to be able to commit & push
 git config --global user.name "$( git log --format=%an -n 1 ${COMMIT_SHA} )"
@@ -16,9 +15,9 @@ git config --global user.email "$( git log --format=%ae -n 1 ${COMMIT_SHA} )"
 # Deploy
 if [ -z "$CIRCLE_TAG" ]; then
   # Deploy latest
-  npx gh-pages-multi deploy --template index.pug;
-  npx gh-pages-multi deploy --template index.pug --target "async";
-  npx gh-pages-multi deploy --template index.pug --better-target --target "async/latest";
+  npx gh-pages-multi deploy -s build --template index.pug;
+  npx gh-pages-multi deploy -s test --template test/index.pug --target "async";
+  npx gh-pages-multi deploy -s build --template index.pug --better-target --target "async/latest";
 else
   # Deploy specific tagged version
   npx gh-pages-multi deploy --template index.pug --target $CIRCLE_TAG;
