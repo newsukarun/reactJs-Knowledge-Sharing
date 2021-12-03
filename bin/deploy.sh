@@ -4,6 +4,7 @@ set -ex
 # Bundle the docs to html and copy to the docs/ folder
 npm run build
 
+mkdir docs
 # Copy all the yaml files to the docs/ folder
 cp -r build/* docs/
 
