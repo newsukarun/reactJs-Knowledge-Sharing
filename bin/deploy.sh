@@ -24,4 +24,4 @@ else
   npx gh-pages-multi deploy --template index.pug --target "async/${CIRCLE_TAG}";
 fi
 
-pug --pretty --extension html --doctype html --client  "async/index.pug"
+pug --pretty --extension html --doctype html --client  "test/index.pug"
