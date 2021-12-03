@@ -17,6 +17,7 @@ if [ -z "$CIRCLE_TAG" ]; then
   # Deploy latest
   npx gh-pages-multi deploy -s build --template index.pug;
   npx gh-pages-multi deploy -s test --template test/index.pug --target "async";
+  cd async;
   npx gh-pages-multi deploy -s build --template index.pug --better-target --target "async/latest";
 else
   # Deploy specific tagged version
