@@ -11,7 +11,7 @@ jobs:
       - checkout
       - run: sudo npm install
       - run: sudo npm install pug-cli -g
-      - run: sudo npm run deploy
+      - run: npm run deploy
 
 workflows:
   version: 2
